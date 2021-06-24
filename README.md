@@ -12,7 +12,7 @@
 - [x] A seperate form for updating car price only
 - [ ] Write unit test
 - [ ] Write integration test
-- [ ] Fill in demo data
+- [x] Fill in demo data
 - [ ] Create at least one API endpoint
 - [x] Upload project to a repository
 - [ ] List all the steps required to get the application running
