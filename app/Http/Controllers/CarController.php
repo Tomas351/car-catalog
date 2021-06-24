@@ -74,6 +74,17 @@ class CarController extends Controller
     {
         return view('Cars.edit', compact('Car'));
     }
+
+        /**
+     * Show the form for updating the price.
+     *
+     * @param  \App\Models\Car  $Car
+     * @return \Illuminate\Http\Response
+     */
+    public function editPrice(Car $Car)
+    {
+        return view('Cars.editPrice', compact('Car'));
+    }
     /**
      * Update the specified resource in storage.
      *
@@ -89,6 +100,23 @@ class CarController extends Controller
             'fuel_type' => 'required',
             'fuel_tank_capacity' => 'required',
             'max_speed' => 'required',
+            'price' => 'required'
+        ]);
+        $Car->update($request->all());
+
+        return redirect()->route('Cars.index')
+            ->with('success', 'Car updated successfully');
+    }
+        /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Car  $Car
+     * @return \Illuminate\Http\Response
+     */
+    public function updatePrice(Request $request, Car $Car)
+    {
+        $request->validate([
             'price' => 'required'
         ]);
         $Car->update($request->all());

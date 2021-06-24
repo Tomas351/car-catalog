@@ -53,8 +53,9 @@
    
                     <a class="btn btn-info" href="{{ route('Cars.show',$car->id) }}">Show</a>
     
+                    <a class="btn btn-warning" href="{{ route('Cars.editPrice',$car->id) }}">Update price</a>
+
                     <a class="btn btn-primary" href="{{ route('Cars.edit',$car->id) }}">Edit</a>
-   
                     @csrf
                     @method('DELETE')
       
