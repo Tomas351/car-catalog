@@ -1,10 +1,9 @@
 ## How to get the application running
 
-Work in progress
+Run the following command in the project root directory
+`./vendor/bin/sail up`
 
-### Filling in the data
-
-To fill in the demo data, use the following command: `php artisan db:seed`
+Once the application is up and running, to fill in the demo data, use the following command: `php artisan db:seed`
 
 ***
 
