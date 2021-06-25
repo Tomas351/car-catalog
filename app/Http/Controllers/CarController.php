@@ -138,6 +138,7 @@ class CarController extends Controller
         return redirect()->route('Cars.index')
             ->with('success', 'Car deleted successfully');
     }
+
     public function search(Request $request)
     {
         $search = $request->get('search');
