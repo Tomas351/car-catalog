@@ -15,7 +15,7 @@ use App\Http\Controllers\CarController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/Cars');
 });
 Route::get('/filter', [CarController::class, 'filter']);
 Route::get('/search', [CarController::class, 'search']);
