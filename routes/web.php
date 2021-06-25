@@ -17,6 +17,8 @@ use App\Http\Controllers\CarController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/filter', [CarController::class, 'filter']);
+Route::get('/search', [CarController::class, 'search']);
 Route::put('/Cars/{Car}/PriceUpdate', [CarController::class, 'updatePrice'])->name('Cars.updatePrice');
 Route::get('/Cars/{Car}/PriceUpdate', [CarController::class, 'editPrice'])->name('Cars.editPrice');
 Route::resource('Cars', CarController::class);

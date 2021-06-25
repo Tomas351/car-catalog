@@ -18,6 +18,59 @@
         </div>
     @endif
 
+<!-- Search -->
+
+<div class="card my-4">
+        <form class="card-body" action="/search" method="get">
+            <div class="input-group">
+                <span class="input-group-btn">
+                <input type="search" class="form-control" placeholder="Search in brand, model or description" name="search">
+
+            <button class="btn btn-secondary" type="submit">Search</button>
+          </span>
+            </div>
+                <div class="form-group">
+                    <select id="sort" name="sort" class="form-control">
+  <option value="">Sort by</option>
+  <option value="price">Price</option>
+  <option value="max_speed">Max speed</option>
+  <option value="fuel_tank_capacity">Fuel tank capacity</option>
+  <option value="horsepower">Horse power</option>
+
+</select>            </div>
+
+        </form>
+    </div>
+
+<!-- Filter -->
+<div class="card my-4">
+        <form class="card-body" action="/filter" method="get">
+            <div class="input-group">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <div><select id="transmission" name="transmission" class="form-control">
+  <option value="">Filter by transmission</option>
+  <option value="Automatic">Automatic</option>
+  <option value="Manual">Manual</option>
+</select></div>                </div>
+            </div>
+            
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <div><select id="fuel_type" name="fuel_type" class="form-control">
+  <option value="">Filter by fuel type</option>
+  <option value="Petrol">Petrol</option>
+  <option value="Diesel">Diesel</option>
+  <option value="Electric">Electric</option>
+
+</select></div>                </div>
+            </div>
+                <span class="input-group-btn">
+            <button class="btn btn-secondary" type="submit">Filter</button>
+          </span>
+            </div>
+        </form>
+    </div>
     <table class="table table-bordered table-responsive-lg">
         <tr>
             <th>ID</th>
@@ -66,6 +119,6 @@
         @endforeach
     </table>
 
-    {!! $Cars->links() !!}
+    {!! $Cars->links('pagination::bootstrap-4') !!}
 
 @endsection

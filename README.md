@@ -5,10 +5,10 @@
 - [x] Edit a car
 - [x] Delete a car
 - [x] Show a list of cars
-- [ ] Search cars from the list
-- [ ] Filter cars from the list
+- [x] Search cars from the list
+- [x] Filter cars from the list
 - [x] Use framework
-- [ ] Sorting in any of the fields in search
+- [x] Sorting in any of the fields in search
 - [x] A seperate form for updating car price only
 - [ ] Write unit test
 - [ ] Write integration test
@@ -21,6 +21,10 @@
 ## How to get the application running
 
 Work in progress
+
+### Filling in the data
+
+To fill in the demo data, use the following command: `php artisan db:seed`
 
 ## How to use the application?
 

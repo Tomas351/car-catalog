@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Car;
+use Illuminate\Support\Facades\DB;
 
 class CarController extends Controller
 {
@@ -136,5 +137,45 @@ class CarController extends Controller
 
         return redirect()->route('Cars.index')
             ->with('success', 'Car deleted successfully');
+    }
+    public function search(Request $request)
+    {
+        $search = $request->get('search');
+        $orderBy = $request->get('sort');
+
+        if($request->filled('sort')){
+            $Cars = DB::table('cars')->where('brand', 'like', '%'.$search.'%')
+        ->orwhere('model', 'like', '%'.$search.'%')
+        ->orwhere('description', 'like', '%'.$search.'%')->orderBy($orderBy, 'asc')->paginate(5);
+        return view('Cars.index',['Cars' => $Cars]);
+        }
+        $Cars = DB::table('cars')->where('brand', 'like', '%'.$search.'%')
+        ->orwhere('model', 'like', '%'.$search.'%')
+        ->orwhere('description', 'like', '%'.$search.'%')->paginate(3);
+        return view('Cars.index',['Cars' => $Cars]);
+    }
+    public function filter(Request $request)
+    {
+        $transmission = $request->get('transmission');
+        $fuel_type = $request->get('fuel_type');
+
+        if($request->filled('transmission') && $request->filled('fuel_type')){
+            $Cars = DB::table('cars')->where('transmission', 'like', '%'.$transmission.'%')->where('fuel_type', 'like', '%'.$fuel_type.'%')->paginate(5);
+            return view('Cars.index',['Cars' => $Cars]);
+        }
+
+        if($request->filled('fuel_type')){
+            $Cars = DB::table('cars')->where('fuel_type', 'like', '%'.$fuel_type.'%')->paginate(5);
+            return view('Cars.index',['Cars' => $Cars]);
+        }
+
+        if($request->filled('transmission')){
+            $Cars = DB::table('cars')->where('transmission', 'like', '%'.$transmission.'%')->paginate(5);
+            return view('Cars.index',['Cars' => $Cars]);
+        }
+
+
+        $Cars = DB::table('cars')->paginate(5);
+        return view('Cars.index',['Cars' => $Cars]);
     }
 }
